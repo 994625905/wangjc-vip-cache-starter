@@ -1,8 +1,7 @@
 package vip.wangjc.cache.annotation;
 
-import vip.wangjc.cache.builder.AbstractLimitKeyBuilder;
-import vip.wangjc.cache.builder.rewrite.NormalLimitKeyBuilder;
 import vip.wangjc.cache.entity.CacheClientType;
+import vip.wangjc.cache.entity.LimitType;
 import vip.wangjc.cache.strategy.AbstractLimitStrategy;
 import vip.wangjc.cache.strategy.rewrite.DefaultLimitStrategy;
 
@@ -21,10 +20,10 @@ import java.lang.annotation.*;
 public @interface Limiter {
 
     /**
-     * 限流的key生成器，默认是普通方法限流
+     * 限流类型，默认为普通方法限流
      * @return
      */
-    Class<? extends AbstractLimitKeyBuilder> keyBuilder() default NormalLimitKeyBuilder.class;
+    LimitType type() default LimitType.NORMAL;
 
     /**
      * 限流成功后的策略，

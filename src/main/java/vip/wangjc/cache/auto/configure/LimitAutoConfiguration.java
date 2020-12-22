@@ -9,6 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import vip.wangjc.cache.LimitTemplate;
 import vip.wangjc.cache.aop.LimitAnnotationAdvisor;
 import vip.wangjc.cache.aop.LimitInterceptor;
+import vip.wangjc.cache.builder.LimitKeyBuilderFactory;
 import vip.wangjc.cache.execute.LimitExecuteFactory;
 
 /**
@@ -36,6 +37,15 @@ public class LimitAutoConfiguration {
         public LimitExecuteFactory limitExecuteFactory(RedisTemplate redisTemplate){
             return new LimitExecuteFactory(redisTemplate);
         }
+    }
+
+    /**
+     * 注入限流key生成器的构建工厂
+     * @return
+     */
+    @Bean
+    public LimitKeyBuilderFactory limitKeyBuilderFactory(){
+        return new LimitKeyBuilderFactory();
     }
 
     /**

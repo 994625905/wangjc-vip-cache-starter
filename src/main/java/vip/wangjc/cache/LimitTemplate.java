@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import vip.wangjc.cache.annotation.Limiter;
+import vip.wangjc.cache.builder.LimitKeyBuilderFactory;
 import vip.wangjc.cache.entity.LimitEntity;
 import vip.wangjc.cache.execute.AbstractLimitExecute;
 import vip.wangjc.cache.execute.LimitExecuteFactory;
@@ -28,6 +29,10 @@ public class LimitTemplate {
     @Autowired(required = false)
     private LimitExecuteFactory limitExecuteFactory;
 
+    /** 限流key生成器的构建工厂 */
+    @Autowired(required = false)
+    private LimitKeyBuilderFactory limitKeyBuilderFactory;
+
     /**
      * 执行限流
      * @param methodInvocation
@@ -41,7 +46,7 @@ public class LimitTemplate {
             return null;
         }
         /** 构建key */
-        String key = limiter.keyBuilder().newInstance().buildKey(methodInvocation, JVM_PROCESSId, LOCAL_MAC, limiter.key());
+        String key = this.limitKeyBuilderFactory.builder(limiter).buildKey(methodInvocation, JVM_PROCESSId, LOCAL_MAC, limiter.key());
 
         /** 构建限流执行器 */
         AbstractLimitExecute limitExecute = this.limitExecuteFactory.buildExecute(limiter);
