@@ -16,13 +16,14 @@ import vip.wangjc.cache.service.RedisService;
 import vip.wangjc.cache.service.impl.RedisServiceImpl;
 
 /**
- * redis组件的自动化配置
+ * 缓存组件的自动化配置
  * @author wangjc
  * @title: CacheAutoConfiguration
  * @projectName wangjc-vip-cache-starter
  * @date 2020/12/20 - 16:32
  */
 @Configuration
+@ConditionalOnClass({RedisOperations.class})
 public class RedisAutoConfiguration {
 
     /**
@@ -67,6 +68,5 @@ public class RedisAutoConfiguration {
     public RedisService redisService(RedisTemplate redisTemplate){
         return new RedisServiceImpl(redisTemplate);
     }
-
 
 }

@@ -1,0 +1,4 @@
+#锁自定义starter的自动化配置
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=vip.wangjc.cache.auto.configure.RedisAutoConfiguration,\
+  vip.wangjc.cache.auto.configure.LimitAutoConfiguration,\
+  vip.wangjc.cache.auto.configure.CachesAutoConfiguration

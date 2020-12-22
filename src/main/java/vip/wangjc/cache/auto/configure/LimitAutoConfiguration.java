@@ -1,16 +1,15 @@
 package vip.wangjc.cache.auto.configure;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import vip.wangjc.cache.limit.LimitTemplate;
-import vip.wangjc.cache.limit.aop.LimitAnnotationAdvisor;
-import vip.wangjc.cache.limit.aop.LimitInterceptor;
-import vip.wangjc.cache.limit.execute.LimitExecuteFactory;
+import vip.wangjc.cache.LimitTemplate;
+import vip.wangjc.cache.aop.LimitAnnotationAdvisor;
+import vip.wangjc.cache.aop.LimitInterceptor;
+import vip.wangjc.cache.execute.LimitExecuteFactory;
 
 /**
  * 限流的自动配置
@@ -34,7 +33,6 @@ public class LimitAutoConfiguration {
          * @return
          */
         @Bean
-        @Order(299)
         public LimitExecuteFactory limitExecuteFactory(RedisTemplate redisTemplate){
             return new LimitExecuteFactory(redisTemplate);
         }
@@ -45,7 +43,6 @@ public class LimitAutoConfiguration {
      * @return
      */
     @Bean
-    @ConditionalOnMissingBean
     public LimitTemplate limitTemplate(){
         return new LimitTemplate();
     }
@@ -56,7 +53,7 @@ public class LimitAutoConfiguration {
      * @return
      */
     @Bean
-    @ConditionalOnMissingBean
+    @ConditionalOnBean(LimitTemplate.class)
     public LimitInterceptor limitInterceptor(LimitTemplate limitTemplate){
         return new LimitInterceptor(limitTemplate);
     }
@@ -67,7 +64,7 @@ public class LimitAutoConfiguration {
      * @return
      */
     @Bean
-    @ConditionalOnMissingBean
+    @ConditionalOnBean(LimitInterceptor.class)
     public LimitAnnotationAdvisor limitAnnotationAdvisor(LimitInterceptor limitInterceptor){
         return new LimitAnnotationAdvisor(limitInterceptor,399);
     }
