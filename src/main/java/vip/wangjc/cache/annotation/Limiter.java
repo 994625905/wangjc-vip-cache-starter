@@ -14,7 +14,7 @@ import java.lang.annotation.*;
  * @projectName wangjc-vip-cache-starter
  * @date 2020/12/21 - 15:21
  */
-@Target({ElementType.METHOD}) // 只作用于方法
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Limiter {
@@ -38,7 +38,7 @@ public @interface Limiter {
     CacheClientType clientType() default CacheClientType.REDIS_TEMPLATE;
 
     /**
-     * 限流的key值，跟type有关
+     * 限流的key值，跟type有关（只在LimitType.PARAM有效）
      * @return
      */
     String[] key() default {};
