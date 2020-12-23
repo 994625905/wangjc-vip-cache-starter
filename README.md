@@ -18,10 +18,10 @@
   ```java
     public interface RedisService {
         /**
-         * 获取当前的RedisTemplate
+         * 获取专属的RedisTemplate（单独构造）
          * @return
          */
-        RedisTemplate getRedisTemplate();
+        CacheRedisTemplate getCacheRedisTemplate();
         //================================================String================================================
         /**
          * 设置值，
@@ -213,6 +213,10 @@
   	│  │  │              │          ParamLimitKeyBuilder.java （请求参数限流key生成器）
   	│  │  │              │          RandomCachesExpireBuilder.java （默认的缓存器过期时间生成器：线程随机数）
   	│  │  │              │
+    	│  │  │              ├─client
+    	│  │  │              │  └─redis
+    	│  │  │              │          CacheRedisTemplate.java （构造缓存专属的RedisTemplate模板）
+    	│  │  │              │
   	│  │  │              ├─entity
   	│  │  │              │      CacheClientType.java （枚举：缓存的客户端类型：redis，memcache，……）
   	│  │  │              │      LimitEntity.java （限流的实体）

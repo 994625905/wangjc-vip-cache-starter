@@ -3,9 +3,9 @@ package vip.wangjc.cache.execute.rewrite;
 import com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
+import vip.wangjc.cache.client.redis.CacheRedisTemplate;
 import vip.wangjc.cache.execute.AbstractLimitExecute;
 
 /**
@@ -19,10 +19,10 @@ public class RedisLimitExecute extends AbstractLimitExecute {
 
     private static final Logger logger = LoggerFactory.getLogger(RedisLimitExecute.class);
 
-    private final RedisTemplate<String,Object> redisTemplate;
+    private final CacheRedisTemplate<String,Object> cacheRedisTemplate;
 
-    public RedisLimitExecute(RedisTemplate redisTemplate){
-        this.redisTemplate = redisTemplate;
+    public RedisLimitExecute(CacheRedisTemplate cacheRedisTemplate){
+        this.cacheRedisTemplate = cacheRedisTemplate;
     }
 
     /**
@@ -51,7 +51,7 @@ public class RedisLimitExecute extends AbstractLimitExecute {
             /** 构造Redis脚本 */
             RedisScript<Long> script = new DefaultRedisScript<>(this.limitScript(),Long.class);
             /** 执行脚本 */
-            Long res = this.redisTemplate.execute(script, keyList, count, period);
+            Long res = this.cacheRedisTemplate.execute(script, keyList, count, period);
             if(res != null && res.intValue() <= count){
                 return true;
             }

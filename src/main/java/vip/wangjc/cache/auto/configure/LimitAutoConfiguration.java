@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisOperations;
-import org.springframework.data.redis.core.RedisTemplate;
 import vip.wangjc.cache.LimitTemplate;
 import vip.wangjc.cache.aop.LimitAnnotationAdvisor;
 import vip.wangjc.cache.aop.LimitInterceptor;
 import vip.wangjc.cache.builder.LimitKeyBuilderFactory;
+import vip.wangjc.cache.client.redis.CacheRedisTemplate;
 import vip.wangjc.cache.execute.LimitExecuteFactory;
 
 /**
@@ -30,12 +30,12 @@ public class LimitAutoConfiguration {
     static class limitExecuteFactoryConfiguration{
         /**
          * 注入限流执行器的构建工厂
-         * @param redisTemplate
+         * @param cacheRedisTemplate
          * @return
          */
         @Bean
-        public LimitExecuteFactory limitExecuteFactory(RedisTemplate redisTemplate){
-            return new LimitExecuteFactory(redisTemplate);
+        public LimitExecuteFactory limitExecuteFactory(CacheRedisTemplate cacheRedisTemplate){
+            return new LimitExecuteFactory(cacheRedisTemplate);
         }
     }
 

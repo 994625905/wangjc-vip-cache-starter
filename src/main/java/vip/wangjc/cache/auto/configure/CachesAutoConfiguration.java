@@ -5,12 +5,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisOperations;
-import org.springframework.data.redis.core.RedisTemplate;
 import vip.wangjc.cache.CachesTemplate;
 import vip.wangjc.cache.aop.CachesAnnotationAdvisor;
 import vip.wangjc.cache.aop.CachesInterceptor;
 import vip.wangjc.cache.aop.FlushAnnotationAdvisor;
 import vip.wangjc.cache.aop.FlushInterceptor;
+import vip.wangjc.cache.client.redis.CacheRedisTemplate;
 import vip.wangjc.cache.execute.CachesExecuteFactory;
 
 /**
@@ -30,12 +30,12 @@ public class CachesAutoConfiguration {
     static class CachesExecuteFactoryConfiguration{
         /**
          * 注入缓存执行器工厂
-         * @param redisTemplate
+         * @param cacheRedisTemplate
          * @return
          */
         @Bean
-        public CachesExecuteFactory cachesExecuteFactory(RedisTemplate redisTemplate){
-            return new CachesExecuteFactory(redisTemplate);
+        public CachesExecuteFactory cachesExecuteFactory(CacheRedisTemplate cacheRedisTemplate){
+            return new CachesExecuteFactory(cacheRedisTemplate);
         }
     }
 

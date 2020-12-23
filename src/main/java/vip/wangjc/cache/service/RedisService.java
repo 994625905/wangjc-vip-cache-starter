@@ -1,6 +1,6 @@
 package vip.wangjc.cache.service;
 
-import org.springframework.data.redis.core.RedisTemplate;
+import vip.wangjc.cache.client.redis.CacheRedisTemplate;
 
 import java.util.List;
 import java.util.Map;
@@ -16,10 +16,10 @@ import java.util.Set;
 public interface RedisService {
 
     /**
-     * 获取当前的RedisTemplate
+     * 获取专属的RedisTemplate
      * @return
      */
-    RedisTemplate getRedisTemplate();
+    CacheRedisTemplate getCacheRedisTemplate();
 
     //================================================String================================================
 

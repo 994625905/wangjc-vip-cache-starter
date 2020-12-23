@@ -11,10 +11,10 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
 /**
- * 构造专属的RedisTemplate模板
+ * 构造缓存专属的RedisTemplate模板
  * @author wangjc
  * @title: CacheRedisTemplate
- * @projectName wangjc-vip
+ * @projectName wangjc-vip-cache-starter
  * @date 2020/12/23 - 14:48
  */
 public class CacheRedisTemplate<K,V> extends RedisTemplate<K,V> {

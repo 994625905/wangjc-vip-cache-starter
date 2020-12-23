@@ -1,7 +1,7 @@
 package vip.wangjc.cache.execute;
 
-import org.springframework.data.redis.core.RedisTemplate;
 import vip.wangjc.cache.annotation.Limiter;
+import vip.wangjc.cache.client.redis.CacheRedisTemplate;
 import vip.wangjc.cache.execute.rewrite.RedisLimitExecute;
 
 /**
@@ -13,10 +13,10 @@ import vip.wangjc.cache.execute.rewrite.RedisLimitExecute;
  */
 public class LimitExecuteFactory {
 
-    private final RedisTemplate redisTemplate;
+    private final CacheRedisTemplate cacheRedisTemplate;
 
-    public LimitExecuteFactory(RedisTemplate redisTemplate){
-        this.redisTemplate = redisTemplate;
+    public LimitExecuteFactory(CacheRedisTemplate cacheRedisTemplate){
+        this.cacheRedisTemplate = cacheRedisTemplate;
     }
 
     /**
@@ -27,7 +27,7 @@ public class LimitExecuteFactory {
     public AbstractLimitExecute buildExecute(Limiter limiter){
         switch (limiter.clientType()){
             case REDIS_TEMPLATE:
-                return new RedisLimitExecute(this.redisTemplate);
+                return new RedisLimitExecute(this.cacheRedisTemplate);
             default:
                 throw new IllegalArgumentException("error limit client argument");
         }

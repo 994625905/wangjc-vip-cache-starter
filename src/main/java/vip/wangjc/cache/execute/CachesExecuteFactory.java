@@ -1,8 +1,8 @@
 package vip.wangjc.cache.execute;
 
-import org.springframework.data.redis.core.RedisTemplate;
 import vip.wangjc.cache.annotation.Caches;
 import vip.wangjc.cache.annotation.Flush;
+import vip.wangjc.cache.client.redis.CacheRedisTemplate;
 import vip.wangjc.cache.execute.rewrite.RedisCachesExecute;
 
 /**
@@ -14,10 +14,10 @@ import vip.wangjc.cache.execute.rewrite.RedisCachesExecute;
  */
 public class CachesExecuteFactory {
 
-    private final RedisTemplate redisTemplate;
+    private final CacheRedisTemplate cacheRedisTemplate;
 
-    public CachesExecuteFactory(RedisTemplate redisTemplate){
-        this.redisTemplate = redisTemplate;
+    public CachesExecuteFactory(CacheRedisTemplate cacheRedisTemplate){
+        this.cacheRedisTemplate = cacheRedisTemplate;
     }
 
     /**
@@ -28,7 +28,7 @@ public class CachesExecuteFactory {
     public AbstractCachesExecute buildExecute(Caches caches){
         switch (caches.clientType()){
             case REDIS_TEMPLATE:
-                return new RedisCachesExecute(this.redisTemplate);
+                return new RedisCachesExecute(this.cacheRedisTemplate);
             default:
                 throw new IllegalArgumentException("error caches client argument");
         }
@@ -42,7 +42,7 @@ public class CachesExecuteFactory {
     public AbstractCachesExecute buildExecute(Flush flush){
         switch (flush.clientType()){
             case REDIS_TEMPLATE:
-                return new RedisCachesExecute(this.redisTemplate);
+                return new RedisCachesExecute(this.cacheRedisTemplate);
             default:
                 throw new IllegalArgumentException("error caches client argument");
         }
