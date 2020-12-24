@@ -280,9 +280,6 @@
   
 
   ## 2、配置文件
-
-- 核心点：因为我更改了RedisTemplate的序列化方式，与springboot自带的Redistemplate冲突，所以配置文件指出允许bean覆盖
-
   ```properties
     spring.redis.host=127.0.0.1
     #需要就放开注释
