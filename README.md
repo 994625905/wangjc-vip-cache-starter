@@ -111,11 +111,6 @@
          * @return
          */
         Class<? extends AbstractCachesKeyBuilder> keyBuilder() default DefaultCachesKeyBuilder.class;
-        /**
-         * 过期时间的生成器，默认为随机
-         * @return
-         */
-        Class<? extends AbstractCachesExpireBuilder> expireBuilder() default RandomCachesExpireBuilder.class;
     }
   ```
 
@@ -288,8 +283,6 @@
     spring.redis.port=6379
     #我默认使用4号槽
     #spring.redis.database=3
-    #bean覆盖
-    spring.main.allow-bean-definition-overriding=true
   ```
 
   ## 3、直接使用

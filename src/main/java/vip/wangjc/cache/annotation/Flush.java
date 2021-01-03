@@ -37,11 +37,4 @@ public @interface Flush {
      * @return
      */
     Class<? extends AbstractCachesKeyBuilder> keyBuilder() default DefaultCachesKeyBuilder.class;
-
-    /**
-     * 过期时间的生成器，默认为随机
-     * @return
-     */
-    Class<? extends AbstractCachesExpireBuilder> expireBuilder() default RandomCachesExpireBuilder.class;
-
 }

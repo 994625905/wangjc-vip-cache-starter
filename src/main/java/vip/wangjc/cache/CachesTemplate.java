@@ -60,7 +60,7 @@ public class CachesTemplate {
     }
 
     /**
-     * 刷新缓存
+     * 刷新缓存--先删除缓存，在更新数据库
      * @param methodInvocation
      * @param flush
      * @return
@@ -77,14 +77,11 @@ public class CachesTemplate {
         /** 构建缓存执行器 */
         AbstractCachesExecute cachesExecute = this.cachesExecuteFactory.buildExecute(flush);
 
-        /** 构建有效时间 */
-        long expire = flush.expireBuilder().newInstance().expire();
-
-        /** 刷新缓存 */
         Object value = null;
+        /** 先删除缓存，在更新数据库 */
         try {
+            cachesExecute.del(key);
             value = methodInvocation.proceed();
-            cachesExecute.set(value, key, expire);
         } catch (Throwable t) {
             logger.error("target method execution failed! reason:[{}]",t.getMessage());
             t.printStackTrace();

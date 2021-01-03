@@ -34,4 +34,9 @@ public class RedisCachesExecute extends AbstractCachesExecute {
     public void set(Object value, String key, long expire) {
         this.cacheRedisTemplate.opsForValue().set(this.key(key),value,expire, TimeUnit.SECONDS);
     }
+
+    @Override
+    public void del(String key) {
+        this.cacheRedisTemplate.delete(key);
+    }
 }

@@ -42,4 +42,10 @@ public abstract class AbstractCachesExecute {
      */
     public abstract void set(Object value, String key, long expire);
 
+    /**
+     * 删除缓存
+     * @param key
+     */
+    public abstract void del(String key);
+
 }
