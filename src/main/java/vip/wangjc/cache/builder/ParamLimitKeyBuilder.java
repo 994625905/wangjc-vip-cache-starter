@@ -1,8 +1,6 @@
-package vip.wangjc.cache.builder.rewrite;
+package vip.wangjc.cache.builder;
 
 import org.aopalliance.intercept.MethodInvocation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.expression.MethodBasedEvaluationContext;
 import org.springframework.core.DefaultParameterNameDiscoverer;
 import org.springframework.core.ParameterNameDiscoverer;
@@ -10,22 +8,22 @@ import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.util.StringUtils;
-import vip.wangjc.cache.builder.AbstractCachesKeyBuilder;
+import vip.wangjc.cache.builder.abstracts.AbstractLimitKeyBuilder;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * 默认的缓存器的key生成器
+ * 参数限流的key生成器
  * @author wangjc
- * @title: ParamCachesKeyBuilder
+ * @title: ParamLimitKeyBuilderServiceImpl
  * @projectName wangjc-vip-cache-starter
  * @date 2020/12/21 - 17:11
  */
-public class DefaultCachesKeyBuilder extends AbstractCachesKeyBuilder {
+public class ParamLimitKeyBuilder extends AbstractLimitKeyBuilder {
 
-    private static final Logger logger = LoggerFactory.getLogger(DefaultCachesKeyBuilder.class);
     /**
      * 记录参数名解析器
      */
@@ -36,8 +34,17 @@ public class DefaultCachesKeyBuilder extends AbstractCachesKeyBuilder {
     private static final ExpressionParser PARSER = new SpelExpressionParser();
 
     @Override
-    public String buildKey(MethodInvocation invocation, String[] definitionKeys) {
+    public String buildKey(MethodInvocation invocation,String jvmProcessId, String localMac, String[] definitionKeys) {
         StringBuffer sb = new StringBuffer();
+
+        /** 本机JVM进程，本地网卡 */
+        sb.append(",JVMProcessId[");
+        sb.append(jvmProcessId);
+        sb.append("],LocalMac[");
+        sb.append(localMac);
+
+        /** 限流类型 */
+        sb.append("],limitType[param limiter]@");
 
         /** 全类名+方法名 */
         Method method = invocation.getMethod();
@@ -48,7 +55,7 @@ public class DefaultCachesKeyBuilder extends AbstractCachesKeyBuilder {
 
         /** 参数定义 */
         if( definitionKeys.length > 1 || !"".equals(definitionKeys[0]) ){
-            sb.append(this.getElDefinitionKey(definitionKeys,method,invocation.getArguments()));
+            sb.append(getElDefinitionKey(definitionKeys,method,invocation.getArguments()));
         }
         return sb.toString();
     }
@@ -74,8 +81,7 @@ public class DefaultCachesKeyBuilder extends AbstractCachesKeyBuilder {
             }
             return StringUtils.collectionToDelimitedString(list,".","","");
         }catch (Exception e){
-            logger.error("caches key analysis faired,please check the reason! keys:[{}]",definitionKeys);
-            throw e;
+            return StringUtils.collectionToDelimitedString(Arrays.asList(definitionKeys),".","","");
         }
     }
 

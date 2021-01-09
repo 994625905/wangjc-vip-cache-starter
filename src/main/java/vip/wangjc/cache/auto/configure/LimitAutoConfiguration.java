@@ -8,9 +8,9 @@ import org.springframework.data.redis.core.RedisOperations;
 import vip.wangjc.cache.LimitTemplate;
 import vip.wangjc.cache.aop.LimitAnnotationAdvisor;
 import vip.wangjc.cache.aop.LimitInterceptor;
-import vip.wangjc.cache.builder.LimitKeyBuilderFactory;
+import vip.wangjc.cache.builder.factory.LimitKeyBuilderFactory;
 import vip.wangjc.cache.client.redis.CacheRedisTemplate;
-import vip.wangjc.cache.execute.LimitExecuteFactory;
+import vip.wangjc.cache.execute.factory.LimitExecuteFactory;
 
 /**
  * 限流的自动配置

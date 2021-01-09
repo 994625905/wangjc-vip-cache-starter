@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import vip.wangjc.cache.annotation.Caches;
 import vip.wangjc.cache.annotation.Flush;
-import vip.wangjc.cache.execute.AbstractCachesExecute;
-import vip.wangjc.cache.execute.CachesExecuteFactory;
+import vip.wangjc.cache.execute.abstracts.AbstractCachesExecute;
+import vip.wangjc.cache.execute.factory.CachesExecuteFactory;
 
 /**
  * 缓存器的模板方法

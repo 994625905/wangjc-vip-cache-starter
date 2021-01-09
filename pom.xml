@@ -13,7 +13,7 @@
 
     <groupId>vip.wangjc</groupId>
     <artifactId>wangjc-vip-cache-starter</artifactId>
-    <version>1.1.3</version>
+    <version>1.1.4</version>
 
     <name>wangjc-vip</name>
     <description>wangjc-vip</description>
@@ -210,6 +210,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

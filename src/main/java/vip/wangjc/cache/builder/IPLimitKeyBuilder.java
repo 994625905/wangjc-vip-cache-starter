@@ -1,9 +1,9 @@
-package vip.wangjc.cache.builder.rewrite;
+package vip.wangjc.cache.builder;
 
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import vip.wangjc.cache.builder.AbstractLimitKeyBuilder;
+import vip.wangjc.cache.builder.abstracts.AbstractLimitKeyBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;

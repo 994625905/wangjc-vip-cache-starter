@@ -1,6 +1,6 @@
-package vip.wangjc.cache.builder.rewrite;
+package vip.wangjc.cache.builder;
 
-import vip.wangjc.cache.builder.AbstractCachesExpireBuilder;
+import vip.wangjc.cache.builder.abstracts.AbstractCachesExpireBuilder;
 
 /**
  * 随机过期时间，防止缓存雪崩

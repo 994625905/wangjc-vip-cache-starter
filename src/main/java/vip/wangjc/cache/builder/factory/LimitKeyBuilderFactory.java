@@ -1,9 +1,10 @@
-package vip.wangjc.cache.builder;
+package vip.wangjc.cache.builder.factory;
 
 import vip.wangjc.cache.annotation.Limiter;
-import vip.wangjc.cache.builder.rewrite.IPLimitKeyBuilder;
-import vip.wangjc.cache.builder.rewrite.NormalLimitKeyBuilder;
-import vip.wangjc.cache.builder.rewrite.ParamLimitKeyBuilder;
+import vip.wangjc.cache.builder.IPLimitKeyBuilder;
+import vip.wangjc.cache.builder.NormalLimitKeyBuilder;
+import vip.wangjc.cache.builder.ParamLimitKeyBuilder;
+import vip.wangjc.cache.builder.abstracts.AbstractLimitKeyBuilder;
 
 /**
  * 限流key构建器的生成工厂

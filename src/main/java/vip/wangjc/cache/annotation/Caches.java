@@ -1,9 +1,9 @@
 package vip.wangjc.cache.annotation;
 
-import vip.wangjc.cache.builder.AbstractCachesExpireBuilder;
-import vip.wangjc.cache.builder.AbstractCachesKeyBuilder;
-import vip.wangjc.cache.builder.rewrite.DefaultCachesKeyBuilder;
-import vip.wangjc.cache.builder.rewrite.RandomCachesExpireBuilder;
+import vip.wangjc.cache.builder.abstracts.AbstractCachesExpireBuilder;
+import vip.wangjc.cache.builder.abstracts.AbstractCachesKeyBuilder;
+import vip.wangjc.cache.builder.DefaultCachesKeyBuilder;
+import vip.wangjc.cache.builder.RandomCachesExpireBuilder;
 import vip.wangjc.cache.entity.CacheClientType;
 
 import java.lang.annotation.*;

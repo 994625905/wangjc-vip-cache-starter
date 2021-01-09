@@ -5,10 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import vip.wangjc.cache.annotation.Limiter;
-import vip.wangjc.cache.builder.LimitKeyBuilderFactory;
+import vip.wangjc.cache.builder.factory.LimitKeyBuilderFactory;
 import vip.wangjc.cache.entity.LimitEntity;
-import vip.wangjc.cache.execute.AbstractLimitExecute;
-import vip.wangjc.cache.execute.LimitExecuteFactory;
+import vip.wangjc.cache.execute.abstracts.AbstractLimitExecute;
+import vip.wangjc.cache.execute.factory.LimitExecuteFactory;
 import vip.wangjc.cache.util.CacheUtil;
 
 /**

@@ -1,4 +1,4 @@
-package vip.wangjc.cache.strategy;
+package vip.wangjc.cache.strategy.abstracts;
 
 import vip.wangjc.cache.entity.LimitEntity;
 

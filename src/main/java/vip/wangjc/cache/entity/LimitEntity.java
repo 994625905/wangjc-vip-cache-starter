@@ -1,6 +1,6 @@
 package vip.wangjc.cache.entity;
 
-import vip.wangjc.cache.execute.AbstractLimitExecute;
+import vip.wangjc.cache.execute.abstracts.AbstractLimitExecute;
 
 import java.io.Serializable;
 

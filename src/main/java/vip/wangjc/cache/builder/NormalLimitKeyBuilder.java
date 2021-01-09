@@ -1,7 +1,7 @@
-package vip.wangjc.cache.builder.rewrite;
+package vip.wangjc.cache.builder;
 
 import org.aopalliance.intercept.MethodInvocation;
-import vip.wangjc.cache.builder.AbstractLimitKeyBuilder;
+import vip.wangjc.cache.builder.abstracts.AbstractLimitKeyBuilder;
 
 import java.lang.reflect.Method;
 

@@ -1,4 +1,4 @@
-package vip.wangjc.cache.execute.rewrite;
+package vip.wangjc.cache.execute;
 
 import com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
 import vip.wangjc.cache.client.redis.CacheRedisTemplate;
-import vip.wangjc.cache.execute.AbstractLimitExecute;
+import vip.wangjc.cache.execute.abstracts.AbstractLimitExecute;
 
 /**
  * redis限流器

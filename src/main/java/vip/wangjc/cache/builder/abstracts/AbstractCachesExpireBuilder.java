@@ -1,4 +1,4 @@
-package vip.wangjc.cache.builder;
+package vip.wangjc.cache.builder.abstracts;
 
 import java.util.concurrent.ThreadLocalRandom;
 

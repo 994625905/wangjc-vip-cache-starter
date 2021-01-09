@@ -11,7 +11,7 @@ import vip.wangjc.cache.aop.CachesInterceptor;
 import vip.wangjc.cache.aop.FlushAnnotationAdvisor;
 import vip.wangjc.cache.aop.FlushInterceptor;
 import vip.wangjc.cache.client.redis.CacheRedisTemplate;
-import vip.wangjc.cache.execute.CachesExecuteFactory;
+import vip.wangjc.cache.execute.factory.CachesExecuteFactory;
 
 /**
  * @author wangjc

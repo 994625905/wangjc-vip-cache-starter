@@ -1,8 +1,9 @@
-package vip.wangjc.cache.execute;
+package vip.wangjc.cache.execute.factory;
 
 import vip.wangjc.cache.annotation.Limiter;
 import vip.wangjc.cache.client.redis.CacheRedisTemplate;
-import vip.wangjc.cache.execute.rewrite.RedisLimitExecute;
+import vip.wangjc.cache.execute.RedisLimitExecute;
+import vip.wangjc.cache.execute.abstracts.AbstractLimitExecute;
 
 /**
  * 限流执行器的生成工厂

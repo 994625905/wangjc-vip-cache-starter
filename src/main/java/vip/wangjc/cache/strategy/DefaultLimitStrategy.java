@@ -1,9 +1,9 @@
-package vip.wangjc.cache.strategy.rewrite;
+package vip.wangjc.cache.strategy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vip.wangjc.cache.entity.LimitEntity;
-import vip.wangjc.cache.strategy.AbstractLimitStrategy;
+import vip.wangjc.cache.strategy.abstracts.AbstractLimitStrategy;
 
 /**
  * 默认的策略

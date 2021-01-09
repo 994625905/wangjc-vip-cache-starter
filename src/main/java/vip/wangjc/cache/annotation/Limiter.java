@@ -2,8 +2,8 @@ package vip.wangjc.cache.annotation;
 
 import vip.wangjc.cache.entity.CacheClientType;
 import vip.wangjc.cache.entity.LimitType;
-import vip.wangjc.cache.strategy.AbstractLimitStrategy;
-import vip.wangjc.cache.strategy.rewrite.DefaultLimitStrategy;
+import vip.wangjc.cache.strategy.abstracts.AbstractLimitStrategy;
+import vip.wangjc.cache.strategy.DefaultLimitStrategy;
 
 import java.lang.annotation.*;
 

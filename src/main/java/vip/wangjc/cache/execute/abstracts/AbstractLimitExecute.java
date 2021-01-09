@@ -1,4 +1,4 @@
-package vip.wangjc.cache.execute;
+package vip.wangjc.cache.execute.abstracts;
 
 /**
  * 限流器

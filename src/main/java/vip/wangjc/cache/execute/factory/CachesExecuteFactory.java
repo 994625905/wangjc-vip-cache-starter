@@ -1,9 +1,10 @@
-package vip.wangjc.cache.execute;
+package vip.wangjc.cache.execute.factory;
 
 import vip.wangjc.cache.annotation.Caches;
 import vip.wangjc.cache.annotation.Flush;
 import vip.wangjc.cache.client.redis.CacheRedisTemplate;
-import vip.wangjc.cache.execute.rewrite.RedisCachesExecute;
+import vip.wangjc.cache.execute.RedisCachesExecute;
+import vip.wangjc.cache.execute.abstracts.AbstractCachesExecute;
 
 /**
  * 缓存执行器的生成工厂
