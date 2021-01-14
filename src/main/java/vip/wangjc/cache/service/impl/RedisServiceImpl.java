@@ -43,7 +43,11 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public <T> T get(String key, Class<T> clz) {
-        return (T)this.cacheRedisTemplate.opsForValue().get(key);
+        Object res = this.cacheRedisTemplate.opsForValue().get(key);
+        if(res != null){
+            return (T)res;
+        }
+        return null;
     }
 
     @Override
@@ -80,7 +84,11 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public <T> T hashGet(String key, Object hashKey) {
-        return (T) this.cacheRedisTemplate.opsForHash().get(key, hashKey);
+        Object res = this.cacheRedisTemplate.opsForHash().get(key, hashKey);
+        if(res != null){
+            return (T)res ;
+        }
+        return null;
     }
 
     @Override
@@ -158,7 +166,12 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public <T> T listRightPop(String key) {
-        return (T) this.cacheRedisTemplate.opsForList().rightPop(key);
+        Object res = this.cacheRedisTemplate.opsForList().rightPop(key);
+        if(res != null){
+            return (T)res;
+        }
+        return null;
+
     }
 
     @Override
@@ -168,7 +181,11 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public <T> T listLeftPop(String key) {
-        return (T) this.cacheRedisTemplate.opsForList().leftPop(key);
+        Object res = this.cacheRedisTemplate.opsForList().leftPop(key);
+        if(res != null){
+            return (T)res;
+        }
+        return null;
     }
 
     @Override
@@ -193,7 +210,11 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public <T> T listGet(String key, long index) {
-        return (T) this.cacheRedisTemplate.opsForList().index(key, index);
+        Object res = this.cacheRedisTemplate.opsForList().index(key, index);
+        if(res != null){
+            return (T)res;
+        }
+        return null;
     }
 
     @Override
