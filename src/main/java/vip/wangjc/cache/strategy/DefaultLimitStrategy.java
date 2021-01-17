@@ -18,7 +18,7 @@ public class DefaultLimitStrategy extends AbstractLimitStrategy {
 
     @Override
     public Object strategy(LimitEntity limitEntity) {
-        logger.error("key[{}] has been limit,period[{}],count[{}]",limitEntity.getKey(),limitEntity.getPeriod(),limitEntity.getCount());
+        logger.error("key[{}] has been limit,period[{}],count[{}]",limitEntity.getKey(),limitEntity.getLimiter().period(),limitEntity.getLimiter().count());
         return null;
     }
 }

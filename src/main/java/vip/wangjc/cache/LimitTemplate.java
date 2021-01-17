@@ -56,7 +56,7 @@ public class LimitTemplate {
 
         /** 限流后置策略 */
         if(!pass){
-            return new LimitEntity(key,limiter.period(),limiter.count(),limitExecute);
+            return new LimitEntity(key,limiter,limitExecute);
         }
         return null;
     }

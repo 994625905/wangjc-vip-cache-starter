@@ -1,5 +1,6 @@
 package vip.wangjc.cache.entity;
 
+import vip.wangjc.cache.annotation.Limiter;
 import vip.wangjc.cache.execute.abstracts.AbstractLimitExecute;
 
 import java.io.Serializable;
@@ -15,27 +16,21 @@ public class LimitEntity implements Serializable {
 
     private static final long serialVersionUID = 7833843471732216083L;
 
-    public LimitEntity(String key, Integer period, Integer count, AbstractLimitExecute execute) {
+    public LimitEntity(String key, Limiter limiter, AbstractLimitExecute execute) {
         this.key = key;
-        this.period = period;
-        this.count = count;
+        this.limiter = limiter;
         this.execute = execute;
     }
 
     /**
-     * 限流的key值
+     * 限流key
      */
     private String key;
 
     /**
-     * 限流时间单位：秒
+     * 限流注解
      */
-    private Integer period;
-
-    /**
-     * period单位内限流次数
-     */
-    private Integer count;
+    private Limiter limiter;
 
     /**
      * 限流执行器
@@ -50,20 +45,12 @@ public class LimitEntity implements Serializable {
         this.key = key;
     }
 
-    public Integer getPeriod() {
-        return period;
+    public Limiter getLimiter() {
+        return limiter;
     }
 
-    public void setPeriod(Integer period) {
-        this.period = period;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setLimiter(Limiter limiter) {
+        this.limiter = limiter;
     }
 
     public AbstractLimitExecute getExecute() {
