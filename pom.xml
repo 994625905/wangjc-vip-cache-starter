@@ -13,7 +13,7 @@
 
     <groupId>vip.wangjc</groupId>
     <artifactId>wangjc-vip-cache-starter</artifactId>
-    <version>1.2.3</version>
+    <version>1.2.8</version>
 
     <name>wangjc-vip</name>
     <description>wangjc-vip</description>
@@ -177,18 +177,21 @@
 
     <dependencies>
 
-        <!--2.10.0的版本革新：薪资ObjectMapper.activateDefaultTyping()来替代enableDefaultTyping()-->
+        <!--2.10.0的版本革新：新增ObjectMapper.activateDefaultTyping()来替代enableDefaultTyping()-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.10.1</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.10.1</version>
+            <optional>true</optional>
         </dependency>
 
+        <!--限流使用的-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
