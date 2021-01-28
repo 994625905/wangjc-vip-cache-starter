@@ -28,7 +28,11 @@ public class CacheRedisTemplate<K,V> extends RedisTemplate<K,V> {
         this.setKeySerializer(RedisSerializer.string());
         this.setHashKeySerializer(RedisSerializer.string());
 
-        /** Jackson序列化 */
+        /**
+         * Jackson序列化
+         * 关于com.fasterxml.jackson.core（jackson-databind，jackson-annotations）的版本问题，要求必须大于2.10.0
+         * 2.10.0的版本革新：新增ObjectMapper.activateDefaultTyping()来替代enableDefaultTyping()
+         */
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
